@@ -20,7 +20,7 @@ const PokemonApp = () => {
 
     return(
         <div>
-            <h1>Welcome to the Pokemon App</h1>
+            {!chosenPokemon && <h1>Welcome to the Pokemon App</h1>}
             <select onChange={(e) => setSelectedPokemon(e.target.value)}>
                 {pokemons.map((pokemon) => (
                     <option value={pokemon.name}>{pokemon.name}</option>

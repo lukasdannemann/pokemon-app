@@ -20,13 +20,15 @@ const PokemonApp = () => {
 
     return(
         <div>
-            {!chosenPokemon && <h1>Welcome to the Pokemon App</h1>}
-            <select onChange={(e) => setSelectedPokemon(e.target.value)}>
+            {!chosenPokemon && <h1>Pokédex</h1>}
+            <select onChange={(e) => setSelectedPokemon(e.target.value)
+            }>
+                <option value="">Välj Pokemon</option>
                 {pokemons.map((pokemon) => (
-                    <option value={pokemon.name}>{pokemon.name}</option>
+                    <option key={pokemon.name} value={pokemon.name}>{pokemon.name}</option>
                 ))}
             </select>
-            <button onClick={() => setChosenPokemon(selectedPokemon)}>Välj</button>
+            <button disabled={!selectedPokemon} onClick={ () => setChosenPokemon(selectedPokemon)}>Välj</button>
             <Pokemon chosenPokemon={chosenPokemon} />
         </div>
     )

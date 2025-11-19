@@ -60,7 +60,6 @@ button:focus-visible {
 }
 
 select {
-
   background: linear-gradient(180deg, #f8d030, #f0c020);
   border: 3px solid #3b4cca;
   border-radius: 12px;
@@ -73,10 +72,6 @@ select {
 
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
   text-transform: capitalize;
-
-  /* Gör så att texten inte klistras mot kanter */
-  outline: none;
-
 }
 
 .select-div{
@@ -97,6 +92,11 @@ select {
     0 0 12px rgba(255, 255, 255, 0.55);
 }
 
+hr{
+  border: none;
+  height: 2px;
+  background-color: #3b4cca;
+}
 .pokemon-name {
   font-weight: bold;
   color: #2a2a2a;
@@ -104,11 +104,8 @@ select {
 }
 
 .pokemon-img {
-  width: 140px;
+  width: 200px;
   margin-bottom: 12px;
-  border-radius: 10px;
-  border: 2px solid #3b4cca;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 .attribute-lists {
@@ -159,15 +156,3 @@ select {
 .type.fairy      { background: #f0b6bc; color: #333; }
 
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}

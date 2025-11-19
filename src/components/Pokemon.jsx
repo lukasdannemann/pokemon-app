@@ -27,10 +27,10 @@ const Pokemon = ({ chosenPokemon }) => {
 
                 <div className="pokemon-card">
                     <h2 className="pokemon-name">{chosenPokemon.toUpperCase()}</h2>
-                    <img className="pokemon-img" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`} alt={chosenPokemon} />
-
+                    <img className="pokemon-img" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt={chosenPokemon} />
+                    <hr />
                     <div className="attribute-lists">
-                        <ul className="types">
+                        <ul>
                             {pokemonData.types.map(type => (
                                 <li className={`type ${type.type.name}`}>{type.type.name}</li>
                             ))}

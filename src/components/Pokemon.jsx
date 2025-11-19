@@ -23,16 +23,24 @@ const Pokemon = ({ chosenPokemon }) => {
 //OM Pokemon är vald, skriv ut information =>
     return (
         <div>
-             { chosenPokemon && pokemonData.types && 
-                <ul className="pokemon-div">
-                    <h2>{chosenPokemon.toUpperCase()}</h2>
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`} alt={chosenPokemon} />
-                    <h3>Types:</h3>
-                    {pokemonData.types.map(type => (
-                        <li key={type.slot}>{type.type.name}</li>
-                        
-                    ))}
-                </ul>}
+            {chosenPokemon && pokemonData.types &&
+
+                <div className="pokemon-card">
+                    <h2 className="pokemon-name">{chosenPokemon.toUpperCase()}</h2>
+                    <img className="pokemon-img" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`} alt={chosenPokemon} />
+
+                    <div className="attribute-lists">
+                        <ul className="type-list">
+                            {pokemonData.types.map(type => (
+                                <li className={`type ${type.type.name}`}>{type.type.name}</li>
+                            ))}
+                        </ul>
+                        <ul className="stats-list">
+                            <li>Weight: {pokemonData.weight}</li>
+                            <li>Height: {pokemonData.height}</li>
+                        </ul>
+                    </div>
+                </div>}
         </div>
     )}
 export default Pokemon

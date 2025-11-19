@@ -3,6 +3,7 @@ import Pokemon from "./Pokemon"
 
 const PokemonApp = () => {
 
+
     const [pokemons, setPokemon] = useState([])
     useEffect(() => {
         const renderPokemons = async() => {
@@ -18,14 +19,17 @@ const PokemonApp = () => {
     const [chosenPokemon, setChosenPokemon] = useState('')
     const [selectedPokemon, setSelectedPokemon] = useState('')
 
+    const capitalize = (name) =>
+        name.charAt(0).toUpperCase() + name.slice(1);
+
     return(
         <div>
             {!chosenPokemon && <h1>Pokédex</h1>}
             <select onChange={(e) => setSelectedPokemon(e.target.value)
             }>
-                <option value="">Välj Pokemon</option>
+                <option value="">Välj Pokémon</option>
                 {pokemons.map((pokemon) => (
-                    <option key={pokemon.name} value={pokemon.name}>{pokemon.name}</option>
+                    <option key={pokemon.name} value={pokemon.name}>{capitalize(pokemon.name)}</option>
                 ))}
             </select>
             <button disabled={!selectedPokemon} onClick={ () => setChosenPokemon(selectedPokemon)}>Välj</button>

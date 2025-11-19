@@ -10,8 +10,6 @@ function App() {
     <>
     {!show ? <button className='start-button' onClick={() => setShow(!false)}>Start Pokémon App</button> :
     <PokemonApp />}
-
-    
     </>
   )
 }

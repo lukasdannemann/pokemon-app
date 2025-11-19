@@ -30,12 +30,12 @@ const Pokemon = ({ chosenPokemon }) => {
                     <img className="pokemon-img" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`} alt={chosenPokemon} />
 
                     <div className="attribute-lists">
-                        <ul className="type-list">
+                        <ul className="types">
                             {pokemonData.types.map(type => (
                                 <li className={`type ${type.type.name}`}>{type.type.name}</li>
                             ))}
                         </ul>
-                        <ul className="stats-list">
+                        <ul className="attributes">
                             <li>Weight: {pokemonData.weight}</li>
                             <li>Height: {pokemonData.height}</li>
                         </ul>

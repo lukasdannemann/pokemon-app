@@ -136,6 +136,10 @@ hr{
   
 }
 
+.back-button{
+  margin-top: 1rem;
+}
+
 .type.normal { color: black; }
 .type.fire       { background: #f08030; }
 .type.water      { background: #6890f0; }

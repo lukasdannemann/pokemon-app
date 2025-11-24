@@ -1,16 +1,19 @@
-import { useState } from 'react'
+import { Routes, Route, useNavigate} from 'react-router-dom'
 import './App.css'
 import PokemonApp from './components/PokemonApp'
+import Pokemon from './components/Pokemon'
+import ErrorPage from './pages/ErrorPage'
 
 function App() {
-
-  const [show, setShow] = useState(false)
+  const navigate = useNavigate()
 
   return (
-    <>
-    {!show ? <button className='start-button' onClick={() => setShow(!false)}>Start Pokémon App</button> :
-    <PokemonApp />}
-    </>
+      <Routes>
+        <Route path='/' element={<button className='start-button' onClick={() => navigate('/pokemons')}>Start Pokémon App</button>}/>
+        <Route path='/pokemons' element={<PokemonApp />} />
+        <Route path='/pokemon/:name' element={<Pokemon />}/>
+        <Route path='*' element={<ErrorPage />}></Route>
+    </Routes>
   )
 }
 

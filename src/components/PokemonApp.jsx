@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Pokemon from "./Pokemon"
+import { useNavigate } from "react-router-dom"
 
 const PokemonApp = () => {
 
@@ -7,7 +7,7 @@ const PokemonApp = () => {
     const [pokemons, setPokemon] = useState([])
     useEffect(() => {
         const renderPokemons = async () => {
-            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151') 
             const json = await response.json()
 
             setPokemon(json.results)
@@ -16,15 +16,15 @@ const PokemonApp = () => {
         renderPokemons()
     }, [])
 
-    const [chosenPokemon, setChosenPokemon] = useState('')
     const [selectedPokemon, setSelectedPokemon] = useState('')
+    const navigate = useNavigate()
 
     const capitalize = (name) =>
         name.charAt(0).toUpperCase() + name.slice(1);
 
     return (
         <div>
-            {!chosenPokemon && <h1>Pokédex</h1>}
+            <h1>Pokédex</h1>
             <div className="select-div">
                 <select onChange={(e) => setSelectedPokemon(e.target.value)
                 }>
@@ -33,9 +33,9 @@ const PokemonApp = () => {
                         <option key={pokemon.name} value={pokemon.name}>{capitalize(pokemon.name)}</option>
                     ))}
                 </select>
-                <button disabled={!selectedPokemon} onClick={() => setChosenPokemon(selectedPokemon)}>Välj</button>
+                <button disabled={!selectedPokemon} onClick={() => navigate(`/pokemon/${selectedPokemon}`)}>Välj</button>
             </div>
-            <Pokemon chosenPokemon={chosenPokemon} />
+            
         </div>
     )
 

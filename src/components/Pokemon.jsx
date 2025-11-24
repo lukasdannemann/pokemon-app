@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react"
+import { useParams, Link } from "react-router-dom"
+
 
 const Pokemon = ({ chosenPokemon }) => {
 
-    const [pokemonData, setPokemonData] = useState([])
+    const {name} = useParams()
+    const chosen = chosenPokemon || name
+    const [pokemonData, setPokemonData] = useState({})
 
     useEffect(() => {
 
-        if (!chosenPokemon) return;
+        if (!chosen) return;
 
         const renderPokemonData = async () => {
-            const results = await fetch(`https://pokeapi.co/api/v2/pokemon/${chosenPokemon}`)
+            const results = await fetch(`https://pokeapi.co/api/v2/pokemon/${chosen}`)
             const json = await results.json()
 
             setPokemonData(json)
@@ -17,16 +21,16 @@ const Pokemon = ({ chosenPokemon }) => {
         }
 
         renderPokemonData()
-    }, [chosenPokemon])
+    }, [chosen])
 
 
 //OM Pokemon är vald, skriv ut information =>
     return (
         <div>
-            {chosenPokemon && pokemonData.types &&
-
+            {chosen && pokemonData.types &&
+                <>
                 <div className="pokemon-card">
-                    <h2 className="pokemon-name">{chosenPokemon.toUpperCase()}</h2>
+                    <h2 className="pokemon-name">{chosen.toUpperCase()}</h2>
                     <img className="pokemon-img" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonData.id}.svg`} alt={chosenPokemon} />
                     <hr />
                     <div className="attribute-lists">
@@ -40,7 +44,9 @@ const Pokemon = ({ chosenPokemon }) => {
                             <li>Height: {pokemonData.height}</li>
                         </ul>
                     </div>
-                </div>}
+                </div>
+                <Link  to={'/pokemons'}><button className='back-button'>Gå tillbaka</button></Link>
+                </>}
         </div>
     )}
 export default Pokemon

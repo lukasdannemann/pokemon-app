@@ -7,6 +7,7 @@ import ErrorPage from './pages/ErrorPage'
 function App() {
   const navigate = useNavigate()
 
+  //Routes för navigation mellan sidor utan att behöva ladda om hela webbplatsen
   return (
       <Routes>
         <Route path='/' element={<button className='start-button' onClick={() => navigate('/pokemons')}>Start Pokémon App</button>}/>

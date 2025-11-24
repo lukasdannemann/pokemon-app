@@ -4,10 +4,12 @@ import { useParams, Link } from "react-router-dom"
 
 const Pokemon = ({ chosenPokemon }) => {
 
+    //Tar objektet {name} från api:et och lägger in i egen variabel (chosen)
     const {name} = useParams()
     const chosen = chosenPokemon || name
     const [pokemonData, setPokemonData] = useState({})
 
+    //Hämtar info om vald Pokemon vid [chosen]
     useEffect(() => {
 
         if (!chosen) return;
@@ -17,9 +19,7 @@ const Pokemon = ({ chosenPokemon }) => {
             const json = await results.json()
 
             setPokemonData(json)
-            console.log(json)
         }
-
         renderPokemonData()
     }, [chosen])
 
